@@ -3,12 +3,10 @@ class Day_3
     @input = File.read("inputs/day3.txt")
   end
 
-  def part_1
-    visited = {"0,0" => true}
+  def visit(visited, chars)
     x = 0
     y = 0
 
-    chars = @input.chars
     chars.each do |c|
       if c == ">"
         x += 1
@@ -26,42 +24,19 @@ class Day_3
     visited.length
   end
 
+  def part_1
+    visited = {"0,0" => true}
+
+    visit(visited, @input.chars)
+  end
+
   def part_2
     visited = {"0,0" => true}
-    x = 0
-    y = 0
+    slices = @input.chars.each_slice(2)
+    santa = slices.map(&:first)
+    robot = slices.map(&:last)
 
-    chars = @input.chars.each_slice(2).map(&:first)
-    chars.each do |c|
-      if c == ">"
-        x += 1
-      elsif c == "<"
-        x -= 1
-      elsif c == "^"
-        y += 1
-      elsif c == "v"
-        y -= 1
-      end
-
-      visited["#{x},#{y}"] = true
-    end
-    x = 0
-    y = 0
-
-    chars = @input.chars.each_slice(2).map(&:last)
-    chars.each do |c|
-      if c == ">"
-        x += 1
-      elsif c == "<"
-        x -= 1
-      elsif c == "^"
-        y += 1
-      elsif c == "v"
-        y -= 1
-      end
-
-      visited["#{x},#{y}"] = true
-    end
-    visited.length
+    visit(visited, santa)
+    visit(visited, robot)
   end
 end
