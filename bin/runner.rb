@@ -1,6 +1,6 @@
 day = ARGV[0]
 
-require_relative "app/day_#{day}.rb"
+require_relative "../app/day_#{day}.rb"
 klass = Object.const_get("Day_#{day}")
 instance = klass.new
 
