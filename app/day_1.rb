@@ -1,6 +1,6 @@
 class Day_1
   def part_1 
-    str = File.read "input.text"
+    str = File.read "inputs/day1.txt"
     str.count("(") - str.count(")")
   end
 
