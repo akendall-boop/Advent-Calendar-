@@ -22,4 +22,8 @@ RSpec.describe(Day_5) do
   it "jchzalrnumimnmhp is naughty" do
     expect(day.nice("jchzalrnumimnmhp")).to eq(false)
   end
+
+  it "part_1 returns 2" do
+    expect(day.part_1).to eq(2)
+  end
 end
